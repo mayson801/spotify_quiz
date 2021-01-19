@@ -5,9 +5,10 @@ from spotify_code import *
 import authorise_keys
 
 app = Flask(__name__)
+app.secret_key = authorise_keys.app_secret_key
 API_BASE = 'https://accounts.spotify.com'
 # Make sure you add this to Redirect URIs in the setting of the application dashboard
-REDIRECT_URI = "http://127.0.0.1:5000/api_callback"
+REDIRECT_URI = "https://myspotifyquiz.herokuapp.com/api_callback"
 # Set this to True for testing but you probably want it set to False in production.
 SHOW_DIALOG = True
 #what the spotify app is allowed to do
@@ -40,7 +41,7 @@ def api_callback():
     res = requests.post(auth_token_url, data={
         "grant_type":"authorization_code",
         "code":code,
-        "redirect_uri":"https://myspotifyquiz.herokuapp.com/api_callback/api_callback",
+        "redirect_uri":"https://myspotifyquiz.herokuapp.com/api_callback",
         "client_id":authorise_keys.CLI_ID,
         "client_secret":authorise_keys.CLI_SEC
         })
@@ -121,4 +122,4 @@ def pass_to_quiz():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
