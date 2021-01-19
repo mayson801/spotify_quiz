@@ -55,8 +55,9 @@ def get_tracks(auth,artist_id):
             listOfalbum[album['name']]=album
             songs_in_album = auth.album_tracks(album_id=album['id'])
             for song in songs_in_album['items']:
-                if song['id'] not in lis_of_songs:
-                    lis_of_songs[song['id']] = {"id":song['id'],"name":song['name'],"preview_url":song['preview_url']}
+                if song(['track']['preview_url'] != None):
+                    if song['id'] not in lis_of_songs:
+                        lis_of_songs[song['id']] = {"id":song['id'],"name":song['name'],"preview_url":song['preview_url']}
 
     for key in lis_of_songs.keys():
         json_format.append(lis_of_songs[key])
