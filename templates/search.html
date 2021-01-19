@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="notquiz">
+<div class="center_in_div">
+    <h2 id="title"> </h2>
+    <form method="post">
+    <input name="text">
+    <input type="submit">
+    </form>
+    <p id="error_message"></p>
+</div>
+<script>
+    if ("{{error_message}}" != "false"){
+    var text = document.createTextNode("{{error_message}}")
+    error_message = document.getElementById("error_message")
+    error_message.appendChild(text)
+    }
+    if("{{type}}" == "artists"){
+        var text = document.createTextNode("Enter An Artist To Generate A Quiz")
+        title = document.getElementById("title")
+        title.appendChild(text)
+    }
+    if("{{type}}" == "playlists"){
+        var text = document.createTextNode("Enter An playlist To Generate A Quiz")
+        title = document.getElementById("title")
+        title.appendChild(text)
+    }
+    if("{{type}}" == "saved_songs"){
+        window.location = "/loading";
+    }
+
+
+</script>
+
+</body>
+</html>

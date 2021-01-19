@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/select_artist.js" type="text/javascript"></script>
+<script>
+var data_JSON = {{ data | safe | tojson}};
+var data_object = JSON.parse(data_JSON);
+</script>
+<meta charset="UTF-8">
+
+<title>Title</title>
+</head>
+
+<body onload="main(data_object)" class="notquiz">
+    <div id="select_table">
+        <div onclick="on_click_function(data_object,0)" onmouseover= mouse_over_boxes("row_0","in") onmouseout=mouse_over_boxes("row_0","out") id="row_0"  class="table_row"></div>
+        <div onclick="on_click_function(data_object,1)" onmouseover= mouse_over_boxes("row_1","in") onmouseout=mouse_over_boxes("row_1","out") id="row_1" class="table_row"></div>
+        <div onclick="on_click_function(data_object,2)" onmouseover= mouse_over_boxes("row_2","in") onmouseout=mouse_over_boxes("row_2","out") id="row_2" class="table_row"></div>
+        <div onclick="on_click_function(data_object,3)" onmouseover= mouse_over_boxes("row_3","in") onmouseout=mouse_over_boxes("row_3","out") id="row_3" class="table_row"></div>
+        <div onclick="on_click_function(data_object,4)" onmouseover= mouse_over_boxes("row_4","in") onmouseout=mouse_over_boxes("row_4","out") id="row_4" class="table_row"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
+
+<script src="/static/get_quiz_questions.js" type="text/javascript"></script>
+<script src="/static/quiz_buttons.js" type="text/javascript"></script>
+<script>
+var JSON_data = {{ data | tojson | safe}};
+
+var correct_answers = get_correct_answers(JSON_data)
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<body onload="create_question(JSON_data,correct_answers)">
+<div></div>
+    <div id="container">
+        <div id="score_box">
+            <div><span>question_number: </span><span id = "question_number">0</span></div>
+            <div><span>correct answers: </span><span id = "questions_right">0</span></div>
+            <div><span>score: </span><span id = "time_score">0</span></div>
+            <div id="timer"><span>timer: </span><span id = "curent_time_score">1001</span></div>
+        </div>
+    </div>
+</body>
+
+</html>

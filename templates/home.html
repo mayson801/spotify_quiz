@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
+
+<head>
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+<body class="notquiz">
+	<div class="center_in_div">
+	<h1>Welcome To Spotify quiz</h1>
+	<h2>A quiz on any spotify artist, playlist or your saved tracks</h2>
+	<button onclick="window.location.href='/verify'">log in</button>
+	</div>
+</body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="notquiz">
+<script>
+    function mouse_over_boxes(id, type){
+    if (type == "in"){
+    document.getElementById(id).style.backgroundColor = 'rgba(0,0,255,0.5)'
+    }
+    else{
+    document.getElementById(id).style.backgroundColor = 'rgba(0,0,255,0)'
+
+    }
+}
+
+function on_click_function(type){
+        $.ajax({
+            url: "",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({type})
+        }).done(function(data) {
+        if(type != "saved_songs"){
+            window.location = "/search/false";;
+            }
+        else{
+            window.location = "/quiz_page";;
+        }
+        });
+}
+</script>
+    <div id="select_table">
+        <div onclick="on_click_function('artists')" onmouseover= mouse_over_boxes("row_0","in") onmouseout=mouse_over_boxes("row_0","out") id="row_0"  class="table_row_select_type"><p>artist</p></div>
+        <div onclick="on_click_function('playlists')" onmouseover= mouse_over_boxes("row_1","in") onmouseout=mouse_over_boxes("row_1","out") id="row_1" class="table_row_select_type"><p>playlist</p></div>
+        <div onclick="on_click_function('saved_songs')" onmouseover= mouse_over_boxes("row_2","in") onmouseout=mouse_over_boxes("row_2","out") id="row_2" class="table_row_select_type"><p>saved songs</p></div>
+    </div>
+</body>
+</html>
