@@ -12,9 +12,9 @@ def log_in():
 
 def search_for_artist_or_playlist(auth, serch_term,type):
     if (type == 'artists'):
-        results = auth.search(q='artist:' + serch_term, type='artist',limit='5')
+        results = auth.search(q='artist:' + serch_term, type='artist',limit='5',market="GB")
     else:
-        results = auth.search(q='playlist:' + serch_term, type='playlist',limit='5')
+        results = auth.search(q='playlist:' + serch_term, type='playlist',limit='5',market="GB")
 
     items = results[type]['items']
     list_of_pos = []
@@ -41,7 +41,7 @@ def search_for_artist_or_playlist(auth, serch_term,type):
 
 
 def get_tracks(auth,artist_id):
-    albums = auth.artist_albums(artist_id, album_type = 'album',limit=50)
+    albums = auth.artist_albums(artist_id, album_type = 'album',limit=50,country="GB")
     listOfalbum = {}
     lis_of_songs = {}
     json_format = []
@@ -66,7 +66,7 @@ def get_tracks_for_playlist_or_saved(auth,playlist_id,type):
     json_format = []
     dict_of_songs = {}
     if (type == "playlists"):
-        songs = auth.playlist_items(playlist_id=playlist_id, limit=100)
+        songs = auth.playlist_items(playlist_id=playlist_id, limit=100,market="GB")
     else:
         songs = auth.current_user_saved_tracks()
     for song in songs['items']:

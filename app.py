@@ -122,4 +122,9 @@ def pass_to_quiz():
 
 
 if __name__ == "__main__":
+    #to run on loacal machine change line 11 to
+    #REDIRECT_URI = "http://127.0.0.1:5000/api_callback"
+    #and line 44 to
+    #"redirect_uri": "http://127.0.0.1:5000/api_callback",
+
     app.run(debug=True)
