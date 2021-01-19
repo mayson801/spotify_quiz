@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect,url_for,jsonify,session
+from flask import Flask, render_template,request,redirect,url_for,session,send_from_directory
 import requests
 import json
 from spotify_code import *
@@ -14,6 +14,10 @@ SHOW_DIALOG = True
 #what the spotify app is allowed to do
 SCOPE = 'playlist-read-private,user-library-read'
 
+@app.route('/favicon.ico')
+def favicon():
+    favicon = '/img/favicon.ico'
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico',mimetype='/img/favicon.ico')
 
 @app.route("/")
 def load_home():
