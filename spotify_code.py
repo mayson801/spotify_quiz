@@ -70,8 +70,9 @@ def get_tracks_for_playlist_or_saved(auth,playlist_id,type):
     else:
         songs = auth.current_user_saved_tracks()
     for song in songs['items']:
-        if song['track']['id'] not in dict_of_songs:
-            dict_of_songs[song['track']['id']] = {"id": song['track']['id'], "name": song['track']['name'], "preview_url": song['track']['preview_url']}
+        if song(['track']['preview_url'] != None):
+            if song['track']['id'] not in dict_of_songs:
+                dict_of_songs[song['track']['id']] = {"id": song['track']['id'], "name": song['track']['name'], "preview_url": song['track']['preview_url']}
 
     for key in dict_of_songs.keys():
         json_format.append(dict_of_songs[key])
