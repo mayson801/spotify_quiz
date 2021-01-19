@@ -26,6 +26,12 @@ function create_question(JSON_data,correct_answers){
     button_2 = create_question_button("button_2")
     button_3 = create_question_button("button_3")
 
+    button_0.onclick = function() {button_press(correct_answers[question_number],"button_0")}
+    button_1.onclick = function() {button_press(correct_answers[question_number],"button_1")}
+    button_2.onclick = function() {button_press(correct_answers[question_number],"button_2")}
+    button_3.onclick = function() {button_press(correct_answers[question_number],"button_3")}
+
+
     table.appendChild(tr);
         tr.appendChild(button_0)
         tr.appendChild(button_1)
@@ -36,10 +42,8 @@ function create_question(JSON_data,correct_answers){
     document.body.appendChild(table);
 
     for( var i=0; i< answers.length; i++){
-    document.getElementById("button_"+String(i)).innerHTML = answers[i]["name"]
-
     button = document.getElementById("button_" + String(i))
-    button.onclick = function() {button_press(correct_answers[question_number],"button_" + String(i))}
+    button.innerHTML = answers[i]["name"]
     }
 
     audioElement = new Audio(correct_answers[question_number]["preview_url"]);
@@ -60,12 +64,14 @@ function create_question_button(button_id){
     button.onmouseout = function() {document.getElementById(button_id).style.opacity = "1"}
     td.appendChild(button)
 
+
     return td
     }
 
 function button_press(correct_answer,button_id){
 timer_button = true
-if (button_id.textContent == correct_answer["name"]){
+console.log(button_id)
+if (document.getElementById(button_id).textContent == correct_answer["name"]){
         document.body.style.backgroundColor = "green";
         var text = document.createTextNode("answer is correct");
 
@@ -77,8 +83,7 @@ if (button_id.textContent == correct_answer["name"]){
         document.getElementById("time_score").innerHTML = String(time_score+this_time_score);
 
 }
-else {
-    document.body.style.backgroundColor = "red";
+else {    document.body.style.backgroundColor = "red";
     var text = document.createTextNode("answer is incorrect");
 }
 
