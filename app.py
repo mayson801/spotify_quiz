@@ -127,4 +127,4 @@ if __name__ == "__main__":
     #and line 44 to
     #"redirect_uri": "http://127.0.0.1:5000/api_callback",
 
-    app.run(debug=True)
+    app.run(debug=False)

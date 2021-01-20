@@ -55,8 +55,9 @@ def get_tracks(auth,artist_id):
             listOfalbum[album['name']]=album
             songs_in_album = auth.album_tracks(album_id=album['id'])
             for song in songs_in_album['items']:
-                if song['id'] not in lis_of_songs:
-                    lis_of_songs[song['id']] = {"id":song['id'],"name":song['name'],"preview_url":song['preview_url']}
+                if (song['preview_url'] != None):
+                    if song['id'] not in lis_of_songs:
+                        lis_of_songs[song['id']] = {"id":song['id'],"name":song['name'],"preview_url":song['preview_url']}
 
     for key in lis_of_songs.keys():
         json_format.append(lis_of_songs[key])
@@ -66,13 +67,15 @@ def get_tracks_for_playlist_or_saved(auth,playlist_id,type):
     json_format = []
     dict_of_songs = {}
     if (type == "playlists"):
-        songs = auth.playlist_items(playlist_id=playlist_id, limit=100,market="GB")
+        songs = auth.playlist_items(playlist_id=playlist_id, limit=100)
     else:
         songs = auth.current_user_saved_tracks()
-    for song in songs['items']:
-        if song['track']['id'] not in dict_of_songs:
-            dict_of_songs[song['track']['id']] = {"id": song['track']['id'], "name": song['track']['name'], "preview_url": song['track']['preview_url']}
 
+    for song in songs['items']:
+        if (song['track']['preview_url'] != None):
+            if song['track']['id'] not in dict_of_songs:
+                dict_of_songs[song['track']['id']] = {"id": song['track']['id'], "name": song['track']['name'], "preview_url": song['track']['preview_url']}
+    print(len(dict_of_songs))
     for key in dict_of_songs.keys():
         json_format.append(dict_of_songs[key])
     return json_format
