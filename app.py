@@ -3,10 +3,10 @@ import requests
 import json
 from spotify_code import *
 #4 lines below for testing only
-import authorise_keys
-CLI_ID = authorise_keys.CLI_ID
-CLI_SEC = authorise_keys.CLI_SEC
-app_secret_key = authorise_keys.app_secret_key
+#import authorise_keys
+#CLI_ID = authorise_keys.CLI_ID
+#CLI_SEC = authorise_keys.CLI_SEC
+#app_secret_key = authorise_keys.app_secret_key
 
 app = Flask(__name__)
 app.secret_key = authorise_keys.app_secret_key
