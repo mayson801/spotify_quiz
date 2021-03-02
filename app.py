@@ -2,6 +2,9 @@ from flask import Flask, render_template,request,redirect,url_for,session,send_f
 import requests
 import json
 from spotify_code import *
+from boto.s3.connection import S3Connection
+import os
+s3 = S3Connection(os.environ['app_secret_key'], os.environ['CLI_ID'], os.environ['CLI_SEC'])
 #4 lines below for testing only
 #import authorise_keys
 #CLI_ID = authorise_keys.CLI_ID
