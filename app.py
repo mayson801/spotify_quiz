@@ -28,7 +28,7 @@ def favicon():
 
 @app.route("/")
 def load_home():
-
+    print(app_secret_key)
     return render_template('home.html')
 
 
