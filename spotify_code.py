@@ -80,8 +80,8 @@ def get_tracks_for_playlist_or_saved(auth,playlist_id,type):
         json_format.append(dict_of_songs[key])
     return json_format
 
-if __name__ == "__main__":
-    auth = log_in()
+#if __name__ == "__main__":
+ #   auth = log_in()
     #testin = search_for_artist_or_playlist(auth,"kanye west","playlists")
     #testin = get_tracks(auth,'3TVXtAsR1Inumwj472S9r4')
     #testin = get_tracks_for_playlist(auth,'1WOR4r4rGFI5irhVvvbR5m')
