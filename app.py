@@ -8,8 +8,7 @@ from spotify_code import *
 #CLI_SEC = authorise_keys.CLI_SEC
 #app_secret_key = authorise_keys.app_secret_key
 #use in heroku
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['app_secret_key'], os.environ['CLI_ID'], os.environ['CLI_SEC'])
+
 
 app = Flask(__name__)
 app.secret_key = authorise_keys.app_secret_key
